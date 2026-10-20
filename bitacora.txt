@@ -1,0 +1,7 @@
+URL: http://127.0.0.1:5500/index.html
+protocolo: http
+host: 127.0.0.1
+puerto: 5500
+ruta: /index.html
+metodo de la peticion: GET
+codigo de estado: 304 not modified 
