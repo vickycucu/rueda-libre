@@ -5,3 +5,14 @@ puerto: 5500
 ruta: /index.html
 metodo de la peticion: GET
 codigo de estado: 304 not modified 
+
+#agregando la ruta inexistente /promociones.html
+codigo de estado 404 not found 
+
+#el servidor no pudo encontrar el recurso solicitado
+
+#Roles
+HTML se encargará de organizar el contenido de la página web, como los títulos, las imágenes, los precios y los botones.
+CSS se utilizará para darle estilo a la página web, definiendo los colores, los tipos de letra, los tamaños, la distribución de los elementos y el diseño del dispositivo
+JavaScript permitirá que la página web responda a las acciones de los usuarios, agregando funciones interactivas y dinámicas.
+
