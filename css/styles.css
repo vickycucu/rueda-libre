@@ -1,0 +1,384 @@
+/* ==========================================================
+   Rueda Libre - Hoja de estilos principal (v1.0)
+   Secciones:
+   1. Variables
+   2. Base (modelo de caja, cuerpo, tipografía, enlaces)
+   3. Estructura (encabezado, contenido principal, pie)
+   4. Navegación
+   5. Componentes (botones, portada, tarjetas, tablas, WhatsApp)
+   6. Formulario
+   ========================================================== */
+
+
+/* ---------- 1. Variables ---------- */
+:root {
+  /* Colores de marca */
+  --verde-ruta: #1B6B3A;
+  --gris-asfalto: #2E3338;
+  --amarillo-sol: #F2A900;
+  --blanco-nube: #F7F7F2;
+  --blanco: #FFFFFF;
+
+  /* Tipografías (con fuentes de respaldo) */
+  --fuente-titulos: "Montserrat", Arial, Helvetica, sans-serif;
+  --fuente-texto: "Open Sans", Helvetica, Arial, sans-serif;
+
+  /* Escala de espaciado */
+  --espacio-xs: 0.25rem;
+  --espacio-s: 0.5rem;
+  --espacio-m: 1rem;
+  --espacio-l: 2rem;
+  --espacio-xl: 3rem;
+
+  /* Medidas generales */
+  --ancho-contenido: 60rem;
+  --radio: 0.5rem;
+}
+
+
+/* ---------- 2. Base ---------- */
+
+/* El ancho de todos los elementos incluye relleno y borde */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Fuente, color de texto y fondo se heredan desde el cuerpo */
+body {
+  margin: 0;
+  font-family: var(--fuente-texto);
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--gris-asfalto);
+  background-color: var(--blanco-nube);
+}
+
+/* Todos los encabezados con la fuente de títulos */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h2 {
+  color: var(--verde-ruta);
+}
+
+strong,
+legend,
+label,
+th {
+  font-weight: 600;
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  color: var(--verde-ruta);
+}
+
+a:hover {
+  color: var(--gris-asfalto);
+}
+
+a:focus {
+  outline: 3px solid var(--gris-asfalto);
+  outline-offset: 3px;
+}
+
+
+/* ---------- 3. Estructura ---------- */
+header {
+  padding: var(--espacio-m);
+  background-color: var(--blanco);
+  border-bottom: 4px solid var(--verde-ruta);
+  text-align: center;
+}
+
+.marca {
+  margin: 0 0 var(--espacio-s);
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--verde-ruta);
+}
+
+/* Contenido principal con ancho máximo y centrado */
+main {
+  max-width: var(--ancho-contenido);
+  margin: 0 auto;
+  padding: var(--espacio-l) var(--espacio-m);
+}
+
+section,
+aside {
+  margin-bottom: var(--espacio-xl);
+}
+
+/* Espacio extra al final para que el enlace de WhatsApp no tape el pie */
+footer {
+  padding: var(--espacio-l) var(--espacio-m) var(--espacio-xl);
+  margin-bottom: var(--espacio-xl);
+  background-color: var(--gris-asfalto);
+  color: var(--blanco);
+  text-align: center;
+}
+
+footer a {
+  color: var(--blanco);
+}
+
+footer a:hover {
+  color: var(--amarillo-sol);
+}
+
+footer a:focus {
+  outline-color: var(--amarillo-sol);
+}
+
+
+/* ---------- 4. Navegación ---------- */
+
+/* Opciones del menú en una fila */
+#menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+#menu li {
+  display: inline-block;
+  margin: var(--espacio-xs);
+}
+
+#menu a {
+  display: inline-block;
+  padding: var(--espacio-s) var(--espacio-m);
+  border: 2px solid transparent;
+  border-radius: var(--radio);
+  color: var(--gris-asfalto);
+  text-decoration: none;
+}
+
+/* #menu a.activo (1,1,1) supera a #menu a (1,0,1) */
+#menu a.activo {
+  color: var(--verde-ruta);
+  font-weight: 600;
+  border-bottom-color: var(--verde-ruta);
+}
+
+#menu a:hover {
+  color: var(--blanco);
+  background-color: var(--verde-ruta);
+}
+
+#menu a:focus {
+  color: var(--gris-asfalto);
+  background-color: var(--amarillo-sol);
+  outline: 3px solid var(--gris-asfalto);
+  outline-offset: 2px;
+}
+
+
+/* ---------- 5. Componentes ---------- */
+
+/* Botones: enlaces de llamada a la acción y botón del formulario */
+.boton,
+button {
+  display: inline-block;
+  padding: var(--espacio-m) var(--espacio-l);
+  border: 2px solid var(--gris-asfalto);
+  border-radius: var(--radio);
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--gris-asfalto);
+  background-color: var(--amarillo-sol);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.boton:hover,
+button:hover {
+  color: var(--blanco);
+  background-color: var(--gris-asfalto);
+}
+
+.boton:focus,
+button:focus {
+  outline: 3px solid var(--gris-asfalto);
+  outline-offset: 3px;
+}
+
+/* Portada de inicio */
+.portada {
+  min-height: 60vh;
+  padding: var(--espacio-xl) var(--espacio-l);
+  border-radius: var(--radio);
+  color: var(--blanco);
+  background-color: var(--verde-ruta);
+  text-align: center;
+}
+
+.portada h1 {
+  margin-top: var(--espacio-l);
+  font-size: 2.5rem;
+}
+
+.portada p {
+  margin-bottom: var(--espacio-l);
+  font-size: 1.25rem;
+}
+
+/* Sobre el fondo verde el foco se marca en blanco */
+.portada .boton:focus {
+  outline-color: var(--blanco);
+}
+
+/* Tarjetas de servicios */
+.tarjeta {
+  position: relative;
+  width: 100%;
+  margin-bottom: var(--espacio-l);
+  padding: var(--espacio-m);
+  border: 1px solid var(--verde-ruta);
+  border-radius: var(--radio);
+  background-color: var(--blanco);
+}
+
+.tarjeta img {
+  display: block;
+  width: 100%;
+  height: 14rem;
+  object-fit: cover;
+  border-radius: var(--radio);
+}
+
+/* Etiqueta "Nuevo" anclada a la esquina superior de su tarjeta */
+.etiqueta-nuevo {
+  position: absolute;
+  top: var(--espacio-l);
+  right: var(--espacio-l);
+  padding: var(--espacio-xs) var(--espacio-m);
+  border-radius: var(--radio);
+  font-weight: 600;
+  color: var(--gris-asfalto);
+  background-color: var(--amarillo-sol);
+}
+
+/* Tablas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--blanco);
+}
+
+caption {
+  padding: var(--espacio-s);
+  font-weight: 600;
+}
+
+th,
+td {
+  padding: var(--espacio-s) var(--espacio-m);
+  border: 1px solid var(--gris-asfalto);
+  text-align: left;
+}
+
+thead th {
+  color: var(--blanco);
+  background-color: var(--verde-ruta);
+}
+
+tbody th {
+  background-color: var(--blanco-nube);
+}
+
+/* Enlace de WhatsApp fijo en la esquina inferior derecha */
+.whatsapp {
+  position: fixed;
+  right: var(--espacio-m);
+  bottom: var(--espacio-m);
+  padding: var(--espacio-s) var(--espacio-m);
+  border: 2px solid var(--blanco);
+  border-radius: var(--radio);
+  font-weight: 600;
+  color: var(--blanco);
+  background-color: var(--verde-ruta);
+  text-decoration: none;
+}
+
+.whatsapp:hover {
+  color: var(--blanco);
+  background-color: var(--gris-asfalto);
+}
+
+.whatsapp:focus {
+  outline: 3px solid var(--gris-asfalto);
+  outline-offset: 3px;
+}
+
+
+/* ---------- 6. Formulario ---------- */
+fieldset {
+  margin: 0 0 var(--espacio-l);
+  padding: var(--espacio-m) var(--espacio-l);
+  border: 1px solid var(--verde-ruta);
+  border-radius: var(--radio);
+  background-color: var(--blanco);
+}
+
+legend {
+  padding: 0 var(--espacio-s);
+  color: var(--verde-ruta);
+}
+
+/* Cada etiqueta sobre su campo */
+label {
+  display: block;
+  margin-bottom: var(--espacio-xs);
+}
+
+/* Campos a todo el ancho disponible */
+input,
+select,
+textarea {
+  width: 100%;
+  padding: var(--espacio-s);
+  border: 1px solid var(--gris-asfalto);
+  border-radius: var(--radio);
+  font-family: var(--fuente-texto);
+  font-size: 1rem;
+  color: var(--gris-asfalto);
+  background-color: var(--blanco);
+}
+
+/* Radios y casillas junto a su etiqueta */
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  margin-right: var(--espacio-s);
+}
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  display: inline;
+}
+
+/* Indicador de foco visible: reemplaza el contorno del navegador */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: 3px solid var(--verde-ruta);
+  outline-offset: 2px;
+  border-color: var(--verde-ruta);
+}

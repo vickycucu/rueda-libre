@@ -7,20 +7,23 @@
     <meta name="description"
         content="Reserva tu bicicleta o recorrido guiado en Rueda Libre. Consulta nuestros horarios y canales de contacto.">
     <title>Rueda Libre | Reservas y Horarios</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
 
     <header>
-        <img src="../img/logo.png" alt="Logo de Rueda Libre" width="150">
-        <p>Rueda Libre</p>
+        <p class="marca">Rueda Libre</p>
 
         <!-- Navbar con rutas ajustadas desde la subcarpeta paginas/ -->
         <nav>
-            <ul>
+            <ul id="menu">
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="tarifas.html">Tarifas y rutas</a></li>
-                <li><a href="#">Reservas</a></li>
+                <li><a href="#" class="activo">Reservas</a></li>
             </ul>
         </nav>
     </header>
@@ -137,6 +140,8 @@
     <footer>
         <p>Rueda Libre | Correo: <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a> | &copy; 2026</p>
     </footer>
+
+    <a class="whatsapp" href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a>
 
 </body>
 

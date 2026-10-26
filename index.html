@@ -5,15 +5,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>rueda libre | Alquiler de bicicletas en medellin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 
 </head>
 
 <body>
   <header>
-    <p>Rueda Libre</p>
+    <p class="marca">Rueda Libre</p>
     <nav>
-      <ul>
-        <li><a href="#">Inicio</a></li>
+      <ul id="menu">
+        <li><a href="#" class="activo">Inicio</a></li>
         <li><a href="paginas/tarifas.html">Tarifas y rutas</a></li>
         <li><a href="paginas/reservas.html">Reservas</a></li>
       </ul>
@@ -21,10 +25,11 @@
   </header>
 
   <main>
-    <h1>Rueda libre | Alquiler de bicicletas en medellin</h1>
-
-
-    <p>Este negocio es para alquilar bicicletas en Medellín</p>
+    <section class="portada">
+      <h1>Rueda libre | Alquiler de bicicletas en medellin</h1>
+      <p>Este negocio es para alquilar bicicletas en Medellín</p>
+      <a class="boton" href="paginas/reservas.html">Reservar ahora</a>
+    </section>
 
     <section>
       <h2>¿Quienes somos?</h2>
@@ -34,21 +39,30 @@
 
     <section>
       <h2>Nuestros servicios</h2>
-      <article>
+      <article class="tarjeta">
+        <img src="img/ruta.jpeg" alt="Grupo de ciclistas con casco pedaleando bicicletas rojas por una ciclovía entre colinas verdes">
         <h3>Alquiler de bicicletas</h3>
         <p>Ofrecemos una amplia variedad de bicicletas para todos los niveles y edades, desde bicicletas de montaña hasta
           bicicletas urbanas. Nuestro objetivo es proporcionar a nuestros clientes la mejor experiencia de ciclismo posible.
         </p>
       </article>
-      <article>
+      <article class="tarjeta">
+        <img src="img/rutaa.jpeg" alt="Mapa en papel con un recorrido marcado en rojo que pasa por montañas, un lago y una cascada">
         <h3>Recorridos guiados</h3>
         <p>Te ofrecemos los <a href="paginas/tarifas.html#recorridos">recorridos guiados</a> con profesionales que te llevaran
           a lugares ocultos y explendidos de la ciudad</p>
       </article>
-      <article>
+      <article class="tarjeta">
+        <img src="img/bicicleta.jpeg" alt="Bicicleta urbana roja de Rueda Libre con canasta, casco y candado, sobre una calle empedrada">
         <h3>Taller basico</h3>
         <p>Te ayudamos y nos aseguramos de que tu viaje no tenga ninguna interrupcion,nos encanta brindarte una buena
           experiencia y una buena bicicleta en tu viaje</p>
+      </article>
+      <article class="tarjeta">
+        <span class="etiqueta-nuevo">Nuevo</span>
+        <img src="img/portada.jpeg" alt="Ciclista con casco pedaleando una bicicleta roja por una vía de Medellín con montañas y el metrocable al fondo">
+        <h3>Bicicletas eléctricas</h3>
+        <p>Recorre las lomas de Medellín sin esfuerzo con nuestras nuevas bicicletas eléctricas de pedaleo asistido.</p>
       </article>
     </section>
 
@@ -88,6 +102,8 @@
   <footer>
     <p>Rueda Libre | Correo: <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a> | &copy; 2026</p>
   </footer>
+
+  <a class="whatsapp" href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a>
 
 </body>
 
