@@ -1,23 +1,10 @@
-/* ==========================================================
-   Rueda Libre - Hoja de estilos principal (v1.0)
-   Secciones:
-   1. Variables
-   2. Base (modelo de caja, cuerpo, tipografía, enlaces)
-   3. Estructura (encabezado, contenido principal, pie)
-   4. Navegación
-   5. Componentes (botones, portada, tarjetas, tablas, WhatsApp)
-   6. Formulario
-   ========================================================== */
-
-
-/* ---------- 1. Variables ---------- */
 :root {
   /* Colores de marca */
-  --verde-ruta: #1B6B3A;
-  --gris-asfalto: #2E3338;
-  --amarillo-sol: #F2A900;
-  --blanco-nube: #F7F7F2;
-  --blanco: #FFFFFF;
+  --verde-ruta: #1E7A4F; /* botones y enlaces */
+  --gris-asfalto: #5B6470; /* texto secundario */
+  --naranja-pedal: #F39A2B; /* destacados y botones secundarios */
+  --azul-noche: #14213D; /* titulo y encabezado */
+  --crema: #FAF6EF; /* fondo general */
 
   /* Tipografías (con fuentes de respaldo) */
   --fuente-titulos: "Montserrat", Arial, Helvetica, sans-serif;
@@ -35,350 +22,545 @@
   --radio: 0.5rem;
 }
 
-
-/* ---------- 2. Base ---------- */
-
-/* El ancho de todos los elementos incluye relleno y borde */
-*,
-*::before,
-*::after {
+/* ==========================
+   1. RESET Y ESTILOS BASE
+   ========================== */
+*, *::before, *::after {
   box-sizing: border-box;
-}
-
-/* Fuente, color de texto y fondo se heredan desde el cuerpo */
-body {
   margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--crema);
+  color: var(--azul-noche);
   font-family: var(--fuente-texto);
-  font-weight: 400;
   line-height: 1.6;
-  color: var(--gris-asfalto);
-  background-color: var(--blanco-nube);
 }
 
-/* Todos los encabezados con la fuente de títulos */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1, h2, h3 {
   font-family: var(--fuente-titulos);
-  font-weight: 700;
-  line-height: 1.2;
+  color: var(--azul-noche);
+  margin-bottom: var(--espacio-m);
 }
 
-h2 {
-  color: var(--verde-ruta);
-}
-
-strong,
-legend,
-label,
-th {
-  font-weight: 600;
-}
-
-img {
-  max-width: 100%;
+p {
+  color: var(--gris-asfalto);
+  margin-bottom: var(--espacio-m);
 }
 
 a {
   color: var(--verde-ruta);
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--gris-asfalto);
+  color: var(--naranja-pedal);
 }
 
-a:focus {
-  outline: 3px solid var(--gris-asfalto);
-  outline-offset: 3px;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
-
-/* ---------- 3. Estructura ---------- */
-header {
-  padding: var(--espacio-m);
-  background-color: var(--blanco);
-  border-bottom: 4px solid var(--verde-ruta);
-  text-align: center;
-}
-
-.marca {
-  margin: 0 0 var(--espacio-s);
-  font-family: var(--fuente-titulos);
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: var(--verde-ruta);
-}
-
-/* Contenido principal con ancho máximo y centrado */
+/* ==========================
+   2. CONTENEDOR PRINCIPAL Y LAYOUT
+   ========================== */
 main {
   max-width: var(--ancho-contenido);
   margin: 0 auto;
   padding: var(--espacio-l) var(--espacio-m);
 }
 
-section,
-aside {
+section {
   margin-bottom: var(--espacio-xl);
+  background-color: #ffffff;
+  padding: var(--espacio-l);
+  border-radius: var(--radio);
+  box-shadow: 0 2px 8px rgba(20, 33, 61, 0.04);
 }
 
-/* Espacio extra al final para que el enlace de WhatsApp no tape el pie */
-footer {
-  padding: var(--espacio-l) var(--espacio-m) var(--espacio-xl);
-  margin-bottom: var(--espacio-xl);
-  background-color: var(--gris-asfalto);
-  color: var(--blanco);
-  text-align: center;
+/* ==========================
+   3. ENCABEZADO Y NAVEGACIÓN
+   ========================== */
+header {
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(20, 33, 61, 0.08);
+  padding: var(--espacio-m) var(--espacio-l);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-footer a {
-  color: var(--blanco);
+.marca {
+  font-family: var(--fuente-titulos);
+  font-size: 1.5rem;
+  color: var(--azul-noche);
+  font-weight: 700;
 }
 
-footer a:hover {
-  color: var(--amarillo-sol);
-}
-
-footer a:focus {
-  outline-color: var(--amarillo-sol);
-}
-
-
-/* ---------- 4. Navegación ---------- */
-
-/* Opciones del menú en una fila */
 #menu {
-  margin: 0;
-  padding: 0;
   list-style: none;
-}
-
-#menu li {
-  display: inline-block;
-  margin: var(--espacio-xs);
+  display: flex;
+  gap: var(--espacio-m);
 }
 
 #menu a {
-  display: inline-block;
-  padding: var(--espacio-s) var(--espacio-m);
-  border: 2px solid transparent;
+  padding: var(--espacio-xs) var(--espacio-s);
   border-radius: var(--radio);
-  color: var(--gris-asfalto);
-  text-decoration: none;
-}
-
-/* #menu a.activo (1,1,1) supera a #menu a (1,0,1) */
-#menu a.activo {
-  color: var(--verde-ruta);
   font-weight: 600;
-  border-bottom-color: var(--verde-ruta);
+  color: var(--azul-noche);
 }
 
+#menu a.activo, 
 #menu a:hover {
-  color: var(--blanco);
   background-color: var(--verde-ruta);
+  color: #ffffff;
 }
 
-#menu a:focus {
-  color: var(--gris-asfalto);
-  background-color: var(--amarillo-sol);
-  outline: 3px solid var(--gris-asfalto);
-  outline-offset: 2px;
-}
-
-
-/* ---------- 5. Componentes ---------- */
-
-/* Botones: enlaces de llamada a la acción y botón del formulario */
-.boton,
-button {
-  display: inline-block;
-  padding: var(--espacio-m) var(--espacio-l);
-  border: 2px solid var(--gris-asfalto);
-  border-radius: var(--radio);
-  font-family: var(--fuente-texto);
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--gris-asfalto);
-  background-color: var(--amarillo-sol);
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.boton:hover,
-button:hover {
-  color: var(--blanco);
-  background-color: var(--gris-asfalto);
-}
-
-.boton:focus,
-button:focus {
-  outline: 3px solid var(--gris-asfalto);
-  outline-offset: 3px;
-}
-
-/* Portada de inicio */
+/* ==========================
+   4. SECCIÓN PORTADA
+   ========================== */
 .portada {
-  min-height: 60vh;
+  background: linear-gradient(rgba(20, 33, 61, 0.75), rgba(20, 33, 61, 0.75)), url('../img/portada.jpeg') center/cover no-repeat;
+  color: #ffffff;
+  text-align: center;
   padding: var(--espacio-xl) var(--espacio-l);
   border-radius: var(--radio);
-  color: var(--blanco);
-  background-color: var(--verde-ruta);
-  text-align: center;
 }
 
 .portada h1 {
-  margin-top: var(--espacio-l);
-  font-size: 2.5rem;
+  color: #ffffff;
+  font-size: 2.2rem;
 }
 
 .portada p {
-  margin-bottom: var(--espacio-l);
-  font-size: 1.25rem;
+  color: var(--crema);
+  font-size: 1.1rem;
+  max-width: 40rem;
+  margin: 0 auto var(--espacio-l) auto;
 }
 
-/* Sobre el fondo verde el foco se marca en blanco */
-.portada .boton:focus {
-  outline-color: var(--blanco);
-}
-
-/* Tarjetas de servicios */
-.tarjeta {
-  position: relative;
-  width: 100%;
-  margin-bottom: var(--espacio-l);
-  padding: var(--espacio-m);
-  border: 1px solid var(--verde-ruta);
+.boton {
+  display: inline-block;
+  background-color: var(--naranja-pedal);
+  color: #ffffff;
+  padding: var(--espacio-s) var(--espacio-l);
   border-radius: var(--radio);
-  background-color: var(--blanco);
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.boton:hover {
+  background-color: var(--verde-ruta);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+/* ==========================
+   5. SECCIÓN DE SERVICIOS (TARJETAS)
+   ========================== */
+/* Grid automático para las tarjetas de servicios */
+section:has(.tarjeta) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--espacio-l);
+  align-items: stretch;
+}
+
+section:has(.tarjeta) > h2 {
+  grid-column: 1 / -1;
+  margin-bottom: 0;
+}
+
+.tarjeta {
+  background-color: var(--crema);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
 }
 
 .tarjeta img {
-  display: block;
   width: 100%;
-  height: 14rem;
+  height: 200px;
   object-fit: cover;
-  border-radius: var(--radio);
 }
 
-/* Etiqueta "Nuevo" anclada a la esquina superior de su tarjeta */
+.tarjeta h3 {
+  padding: var(--espacio-m) var(--espacio-m) var(--espacio-xs) var(--espacio-m);
+  font-size: 1.2rem;
+}
+
+.tarjeta p {
+  padding: 0 var(--espacio-m) var(--espacio-m) var(--espacio-m);
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
 .etiqueta-nuevo {
   position: absolute;
-  top: var(--espacio-l);
-  right: var(--espacio-l);
-  padding: var(--espacio-xs) var(--espacio-m);
+  top: var(--espacio-s);
+  right: var(--espacio-s);
+  background-color: var(--naranja-pedal);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-family: var(--fuente-titulos);
+  padding: var(--espacio-xs) var(--espacio-s);
   border-radius: var(--radio);
-  font-weight: 600;
+  text-transform: uppercase;
+  font-weight: 700;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* ==========================
+   6. SECCIÓN ¿CÓMO ALQUILAR?
+   ========================== */
+ol {
+  padding-left: var(--espacio-l);
+}
+
+ol li {
+  margin-bottom: var(--espacio-s);
   color: var(--gris-asfalto);
-  background-color: var(--amarillo-sol);
-}
-
-/* Tablas */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: var(--blanco);
-}
-
-caption {
-  padding: var(--espacio-s);
   font-weight: 600;
 }
 
-th,
-td {
-  padding: var(--espacio-s) var(--espacio-m);
-  border: 1px solid var(--gris-asfalto);
-  text-align: left;
+ol li strong, ol li em {
+  color: var(--azul-noche);
 }
 
-thead th {
-  color: var(--blanco);
-  background-color: var(--verde-ruta);
+/* ==========================
+   7. SECCIÓN ENCUÉNTRANOS
+   ========================== */
+#encuentranos ul {
+  list-style: disc;
+  padding-left: var(--espacio-l);
+  margin-bottom: var(--espacio-m);
 }
 
-tbody th {
-  background-color: var(--blanco-nube);
-}
-
-/* Enlace de WhatsApp fijo en la esquina inferior derecha */
-.whatsapp {
-  position: fixed;
-  right: var(--espacio-m);
-  bottom: var(--espacio-m);
-  padding: var(--espacio-s) var(--espacio-m);
-  border: 2px solid var(--blanco);
-  border-radius: var(--radio);
-  font-weight: 600;
-  color: var(--blanco);
-  background-color: var(--verde-ruta);
-  text-decoration: none;
-}
-
-.whatsapp:hover {
-  color: var(--blanco);
-  background-color: var(--gris-asfalto);
-}
-
-.whatsapp:focus {
-  outline: 3px solid var(--gris-asfalto);
-  outline-offset: 3px;
-}
-
-
-/* ---------- 6. Formulario ---------- */
-fieldset {
-  margin: 0 0 var(--espacio-l);
-  padding: var(--espacio-m) var(--espacio-l);
-  border: 1px solid var(--verde-ruta);
-  border-radius: var(--radio);
-  background-color: var(--blanco);
-}
-
-legend {
-  padding: 0 var(--espacio-s);
-  color: var(--verde-ruta);
-}
-
-/* Cada etiqueta sobre su campo */
-label {
-  display: block;
+#encuentranos ul li {
+  color: var(--gris-asfalto);
   margin-bottom: var(--espacio-xs);
 }
 
-/* Campos a todo el ancho disponible */
-input,
-select,
-textarea {
+/* Ajuste de las imágenes sueltas en Encuéntranos */
+#encuentranos img {
   width: 100%;
+  max-width: 320px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radio);
+  margin: var(--espacio-s) 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#encuentranos a {
+  display: inline-block;
+  margin-right: var(--espacio-m);
+  margin-top: var(--espacio-m);
+  font-weight: 600;
+}
+
+/* ==========================
+   8. FOOTER Y BOTÓN WHATSAPP
+   ========================== */
+footer {
+  background-color: var(--azul-noche);
+  color: var(--crema);
+  text-align: center;
+  padding: var(--espacio-l);
+  margin-top: var(--espacio-xl);
+}
+
+footer p {
+  color: var(--crema);
+  margin-bottom: 0;
+}
+
+footer a {
+  color: var(--naranja-pedal);
+}
+
+/* Botón flotante de WhatsApp */
+.whatsapp {
+  position: fixed;
+  bottom: var(--espacio-l);
+  right: var(--espacio-l);
+  background-color: #25D366;
+  color: #ffffff;
+  padding: var(--espacio-s) var(--espacio-m);
+  border-radius: 50px;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 1000;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.whatsapp:hover {
+  transform: scale(1.08);
+  background-color: #20ba5a;
+  color: #ffffff;
+}
+
+/* ==========================
+   9. DISEÑO RESPONSIVO (MÓVILES)
+   ========================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: var(--espacio-s);
+  }
+
+  #menu {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .portada h1 {
+    font-size: 1.7rem;
+  }
+}
+/* Ajustes adicionales para la sección Encuéntranos */
+#encuentranos .galeria {
+  display: flex;
+  gap: var(--espacio-m);
+  flex-wrap: wrap;
+  margin: var(--espacio-m) 0;
+}
+
+#encuentranos .galeria img {
+  flex: 1 1 200px;
+  max-width: 100%;
+}
+
+.enlaces-contacto {
+  display: flex;
+  gap: var(--espacio-m);
+  flex-wrap: wrap;
+  margin-top: var(--espacio-m);
+}
+/* ==========================
+   ESTILOS DE FORMULARIO Y RESERVAS
+   ========================== */
+.formulario-reserva fieldset {
+  border: 1px solid rgba(20, 33, 61, 0.15);
+  border-radius: var(--radio);
+  padding: var(--espacio-m);
+  margin-bottom: var(--espacio-l);
+}
+
+.formulario-reserva legend {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  color: var(--azul-noche);
+  padding: 0 var(--espacio-xs);
+}
+
+.grupo-campo {
+  margin-bottom: var(--espacio-m);
+  display: flex;
+  flex-direction: column;
+}
+
+.grupo-campo label {
+  font-weight: 600;
+  margin-bottom: var(--espacio-xs);
+  color: var(--azul-noche);
+}
+
+.grupo-campo input[type="text"],
+.grupo-campo input[type="email"],
+.grupo-campo input[type="tel"],
+.grupo-campo input[type="date"],
+.grupo-campo input[type="number"],
+.grupo-campo select,
+.grupo-campo textarea {
   padding: var(--espacio-s);
   border: 1px solid var(--gris-asfalto);
   border-radius: var(--radio);
   font-family: var(--fuente-texto);
   font-size: 1rem;
+  background-color: #ffffff;
+}
+
+.grupo-campo input:focus,
+.grupo-campo select:focus,
+.grupo-campo textarea:focus {
+  outline: 2px solid var(--verde-ruta);
+  border-color: transparent;
+}
+
+.opciones-radio {
+  display: flex;
+  gap: var(--espacio-m);
+  flex-wrap: wrap;
+  margin-top: var(--espacio-xs);
+}
+
+.opciones-radio label {
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.checkbox-campo {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--espacio-s);
+}
+
+.checkbox-campo label {
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.formulario-reserva button.boton {
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  width: 100%;
+}
+
+/* Horarios */
+.lista-horarios dt {
+  font-weight: 700;
+  color: var(--azul-noche);
+  margin-top: var(--espacio-s);
+}
+
+.lista-horarios dd {
   color: var(--gris-asfalto);
-  background-color: var(--blanco);
+  margin-left: 0;
+  margin-bottom: var(--espacio-s);
 }
 
-/* Radios y casillas junto a su etiqueta */
-input[type="radio"],
-input[type="checkbox"] {
-  width: auto;
-  margin-right: var(--espacio-s);
+.informacion-adicional {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--espacio-l);
+}
+/* ==========================================
+   ESTILOS DE TABLAS Y TARIFAS
+   ========================================== */
+
+/* Contenedor con scroll horizontal en móviles para evitar que las tablas desborden */
+.tabla-contenedor {
+  overflow-x: auto;
+  margin-top: var(--espacio-m);
 }
 
-input[type="radio"] + label,
-input[type="checkbox"] + label {
-  display: inline;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var(--espacio-s);
+  font-size: 0.95rem;
+  background-color: #ffffff;
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(20, 33, 61, 0.04);
 }
 
-/* Indicador de foco visible: reemplaza el contorno del navegador */
-input:focus,
-select:focus,
-textarea:focus {
-  outline: 3px solid var(--verde-ruta);
-  outline-offset: 2px;
-  border-color: var(--verde-ruta);
+caption {
+  text-align: left;
+  font-weight: 600;
+  color: var(--gris-asfalto);
+  margin-bottom: var(--espacio-s);
+  font-size: 0.9rem;
+}
+
+th, td {
+  padding: var(--espacio-m);
+  text-align: left;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+thead tr {
+  background-color: var(--azul-noche);
+  color: #ffffff;
+}
+
+thead th {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+}
+
+/* Filas alternadas para mejor lectura */
+tbody tr:nth-child(even) {
+  background-color: var(--crema);
+}
+
+tbody tr:hover {
+  background-color: rgba(30, 122, 79, 0.08);
+}
+
+tbody th {
+  color: var(--azul-noche);
+  font-weight: 600;
+}
+
+td {
+  color: var(--gris-asfalto);
+  font-weight: 600;
+}
+
+/* Etiquetas visuales para los niveles de dificultad */
+.nivel {
+  display: inline-block;
+  padding: var(--espacio-xs) var(--espacio-s);
+  border-radius: var(--radio);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.nivel.facil {
+  background-color: var(--verde-ruta);
+}
+
+.nivel.medio {
+  background-color: var(--naranja-pedal);
+}
+
+.nivel.dificil {
+  background-color: #d9534f;
+}
+
+/* Sección de Información Importante */
+.tarjeta-info {
+  background-color: #ffffff;
+  border-left: 5px solid var(--verde-ruta);
+  padding: var(--espacio-l);
+  border-radius: var(--radio);
+  box-shadow: 0 2px 8px rgba(20, 33, 61, 0.04);
+}
+
+.tarjeta-info h3 {
+  margin-top: var(--espacio-m);
+  font-size: 1.1rem;
+}
+
+.lista-requisitos {
+  list-style: disc;
+  padding-left: var(--espacio-l);
+  color: var(--gris-asfalto);
+}
+
+.lista-requisitos li {
+  margin-bottom: var(--espacio-xs);
 }
