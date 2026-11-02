@@ -7,6 +7,7 @@
    3. Encabezado y navegación
    4. Sección portada y botones
    5. Sección de servicios (tarjetas)
+   5.1. Sección Nuestra flota
    6. Sección ¿Cómo alquilar?
    7. Sección Encuéntranos
    8. Footer y botón WhatsApp
@@ -275,6 +276,57 @@ section:has(.tarjeta) > h2 {
   text-transform: uppercase;
   font-weight: 700;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+
+/* ==========================
+   5.1. SECCIÓN NUESTRA FLOTA
+   ========================== */
+/* Las columnas dependen del espacio disponible, sin media queries */
+.flota-cuadricula {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--espacio-l);
+}
+
+/* space-between deja el enlace "Reservar" siempre al final de la tarjeta */
+.flota-tarjeta {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--espacio-m);
+  padding: var(--espacio-m);
+  border: 1px solid var(--verde-ruta);
+  border-radius: var(--radio);
+  background-color: var(--crema);
+}
+
+.flota-tarjeta img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: var(--radio);
+  margin-bottom: var(--espacio-m);
+}
+
+.flota-tarjeta h3 {
+  font-size: 1.2rem;
+  margin-bottom: var(--espacio-s);
+}
+
+.flota-tarjeta p {
+  font-size: 0.95rem;
+  margin-bottom: var(--espacio-s);
+}
+
+.flota-tarjeta .flota-precio {
+  color: var(--azul-noche);
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.flota-tarjeta .boton {
+  text-align: center;
 }
 
 

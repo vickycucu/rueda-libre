@@ -16,3 +16,8 @@ HTML se encargará de organizar el contenido de la página web, como los título
 CSS se utilizará para darle estilo a la página web, definiendo los colores, los tipos de letra, los tamaños, la distribución de los elementos y el diseño del dispositivo
 JavaScript permitirá que la página web responda a las acciones de los usuarios, agregando funciones interactivas y dinámicas.
 
+#Columnas de la sección Nuestra flota (7 modelos)
+1280 px: 4 columnas
+900 px: 3 columnas
+500 px: 1 columna
+
