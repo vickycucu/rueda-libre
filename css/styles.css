@@ -6,6 +6,7 @@
    2. Contenedor principal y layout
    3. Encabezado y navegación
    4. Sección portada y botones
+   4.1. Galería Nuestras rutas
    5. Sección de servicios (tarjetas)
    5.1. Sección Nuestra flota
    6. Sección ¿Cómo alquilar?
@@ -176,11 +177,22 @@ header {
 /* ==========================
    4. SECCIÓN PORTADA Y BOTONES
    ========================== */
+/* Dos columnas iguales; align-items centra el texto frente a la foto */
 .portada {
-  background: linear-gradient(rgba(20, 33, 61, 0.75), rgba(20, 33, 61, 0.75)), url('../img/portada.jpeg') center/cover no-repeat;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--espacio-xl);
+  align-items: center;
+  background-color: var(--azul-noche);
   color: #ffffff;
-  text-align: center;
+  text-align: left;
   padding: var(--espacio-xl) var(--espacio-l);
+  border-radius: var(--radio);
+}
+
+/* Sin recorte: la foto trae texto propio que no debe cortarse */
+.portada img {
+  width: 100%;
   border-radius: var(--radio);
 }
 
@@ -193,7 +205,7 @@ header {
   color: var(--crema);
   font-size: 1.1rem;
   max-width: 40rem;
-  margin: 0 auto var(--espacio-l) auto;
+  margin-bottom: var(--espacio-l);
 }
 
 .boton {
@@ -212,6 +224,38 @@ header {
   background-color: var(--verde-ruta);
   color: #ffffff;
   transform: translateY(-2px);
+}
+
+
+/* ==========================
+   4.1. GALERÍA NUESTRAS RUTAS
+   ========================== */
+.rutas-galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--espacio-l);
+}
+
+.ruta-tarjeta {
+  background-color: var(--crema);
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.ruta-tarjeta img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.ruta-info {
+  padding: var(--espacio-m);
+}
+
+.ruta-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: var(--espacio-s);
 }
 
 
@@ -455,6 +499,19 @@ footer a {
 /* ==========================
    9. FORMULARIO Y RESERVAS
    ========================== */
+/* Formulario dos tercios, contacto un tercio */
+.reservas-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: var(--espacio-l);
+  align-items: start;
+  margin-bottom: var(--espacio-xl);
+}
+
+.reservas-layout > section {
+  margin-bottom: 0;
+}
+
 .formulario-reserva fieldset {
   border: 1px solid rgba(20, 33, 61, 0.15);
   border-radius: var(--radio);
@@ -473,6 +530,22 @@ footer a {
   margin-bottom: var(--espacio-m);
   display: flex;
   flex-direction: column;
+}
+
+/* Dos campos cortos en una línea; bajan a dos si no caben */
+.fila-campos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--espacio-m);
+}
+
+.fila-campos .grupo-campo {
+  flex: 1 1 10rem;
+}
+
+/* Sin esto el ancho propio del input fuerza el salto de línea */
+.fila-campos input {
+  width: 100%;
 }
 
 .grupo-campo label {
@@ -548,12 +621,14 @@ footer a {
 
 .informacion-adicional {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: 1fr;
   gap: var(--espacio-l);
 }
 
+/* El correo puede partirse para no ensanchar la columna de un tercio */
 .enlace-destacado {
   font-weight: 600;
+  overflow-wrap: anywhere;
 }
 
 
@@ -686,6 +761,12 @@ td {
 
   .portada h1 {
     font-size: 1.7rem;
+  }
+
+  .portada,
+  .rutas-galeria,
+  .reservas-layout {
+    grid-template-columns: 1fr;
   }
 
   footer {

@@ -21,3 +21,12 @@ JavaScript permitirá que la página web responda a las acciones de los usuarios
 900 px: 3 columnas
 500 px: 1 columna
 
+#Layout: Flexbox o Grid
+Criterio: Flexbox para una dimensión (elementos en una sola línea); Grid para dos dimensiones o cuando el contenedor define las columnas.
+Portada: Grid. El contenedor define dos columnas con 1fr 1fr y en esa fila centra el texto frente a la foto con align-items, así controla columna y fila a la vez.
+Galería: Grid. Las tarjetas se alinean por columnas y por filas: repeat(3, 1fr) da tres columnas iguales y, al apilarse, siguen el mismo trazado.
+Reservas: Grid. La proporción 2:1 es una decisión de columnas del contenedor (2fr 1fr) y no depende del contenido de cada bloque.
+Fila del formulario: Flexbox. Son dos campos (documento y celular) en una sola línea, una dimensión; gap los separa y bajan a otra línea si no caben.
+Encabezado: Flexbox. Marca y menú van en una sola línea, una dimensión; justify-content los separa y align-items los centra.
+Pie: Flexbox. Tres bloques en una sola línea, una dimensión; no hay otra fila con la que alinearlos.
+
