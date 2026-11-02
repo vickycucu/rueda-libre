@@ -1,3 +1,24 @@
+/* ==========================================================
+   Rueda Libre - Hoja de estilos principal (v1.0)
+   Secciones:
+   0. Variables
+   1. Reset y estilos base
+   2. Contenedor principal y layout
+   3. Encabezado y navegación
+   4. Sección portada y botones
+   5. Sección de servicios (tarjetas)
+   6. Sección ¿Cómo alquilar?
+   7. Sección Encuéntranos
+   8. Footer y botón WhatsApp
+   9. Formulario y reservas
+   10. Tablas y tarifas
+   11. Diseño responsivo (móviles)
+   ========================================================== */
+
+
+/* ==========================
+   0. VARIABLES
+   ========================== */
 :root {
   /* Colores de marca */
   --verde-ruta: #1E7A4F; /* botones y enlaces */
@@ -8,19 +29,20 @@
 
   /* Tipografías (con fuentes de respaldo) */
   --fuente-titulos: "Montserrat", Arial, Helvetica, sans-serif;
-  --fuente-texto: "Open Sans", Helvetica, Arial, sans-serif;
+  --fuente-texto: "Open Sans", Arial, Helvetica, sans-serif;
 
-  /* Escala de espaciado */
+  /* Espaciados */
   --espacio-xs: 0.25rem;
   --espacio-s: 0.5rem;
   --espacio-m: 1rem;
-  --espacio-l: 2rem;
+  --espacio-l: 1.5rem;
   --espacio-xl: 3rem;
 
   /* Medidas generales */
-  --ancho-contenido: 60rem;
+  --ancho-contenido: 70rem;
   --radio: 0.5rem;
 }
+
 
 /* ==========================
    1. RESET Y ESTILOS BASE
@@ -35,11 +57,14 @@ body {
   background-color: var(--crema);
   color: var(--azul-noche);
   font-family: var(--fuente-texto);
+  font-weight: 400;
   line-height: 1.6;
 }
 
 h1, h2, h3 {
   font-family: var(--fuente-titulos);
+  font-weight: 700;
+  line-height: 1.2;
   color: var(--azul-noche);
   margin-bottom: var(--espacio-m);
 }
@@ -59,11 +84,25 @@ a:hover {
   color: var(--naranja-pedal);
 }
 
+/* Indicador de foco visible al navegar con teclado */
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--azul-noche);
+  outline-offset: 3px;
+}
+
+/* Sobre fondos oscuros el foco se marca en color claro */
+.portada a:focus-visible,
+footer a:focus-visible {
+  outline-color: var(--crema);
+}
+
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
+
 
 /* ==========================
    2. CONTENEDOR PRINCIPAL Y LAYOUT
@@ -82,6 +121,13 @@ section {
   box-shadow: 0 2px 8px rgba(20, 33, 61, 0.04);
 }
 
+/* Bloques de título de las páginas internas */
+.portada-secundaria,
+.encabezado-pagina {
+  text-align: center;
+}
+
+
 /* ==========================
    3. ENCABEZADO Y NAVEGACIÓN
    ========================== */
@@ -98,6 +144,7 @@ header {
 }
 
 .marca {
+  margin-bottom: 0;
   font-family: var(--fuente-titulos);
   font-size: 1.5rem;
   color: var(--azul-noche);
@@ -107,6 +154,7 @@ header {
 #menu {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   gap: var(--espacio-m);
 }
 
@@ -117,14 +165,15 @@ header {
   color: var(--azul-noche);
 }
 
-#menu a.activo, 
+#menu a.activo,
 #menu a:hover {
   background-color: var(--verde-ruta);
   color: #ffffff;
 }
 
+
 /* ==========================
-   4. SECCIÓN PORTADA
+   4. SECCIÓN PORTADA Y BOTONES
    ========================== */
 .portada {
   background: linear-gradient(rgba(20, 33, 61, 0.75), rgba(20, 33, 61, 0.75)), url('../img/portada.jpeg') center/cover no-repeat;
@@ -163,6 +212,7 @@ header {
   color: #ffffff;
   transform: translateY(-2px);
 }
+
 
 /* ==========================
    5. SECCIÓN DE SERVICIOS (TARJETAS)
@@ -227,6 +277,7 @@ section:has(.tarjeta) > h2 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+
 /* ==========================
    6. SECCIÓN ¿CÓMO ALQUILAR?
    ========================== */
@@ -237,12 +288,12 @@ ol {
 ol li {
   margin-bottom: var(--espacio-s);
   color: var(--gris-asfalto);
-  font-weight: 600;
 }
 
 ol li strong, ol li em {
   color: var(--azul-noche);
 }
+
 
 /* ==========================
    7. SECCIÓN ENCUÉNTRANOS
@@ -266,7 +317,7 @@ ol li strong, ol li em {
   object-fit: cover;
   border-radius: var(--radio);
   margin: var(--espacio-s) 0;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 #encuentranos a {
@@ -276,20 +327,50 @@ ol li strong, ol li em {
   font-weight: 600;
 }
 
+#encuentranos .galeria {
+  display: flex;
+  gap: var(--espacio-m);
+  flex-wrap: wrap;
+  margin: var(--espacio-m) 0;
+}
+
+#encuentranos .galeria img {
+  flex: 1 1 200px;
+  max-width: 100%;
+}
+
+.enlaces-contacto {
+  display: flex;
+  gap: var(--espacio-m);
+  flex-wrap: wrap;
+  margin-top: var(--espacio-m);
+}
+
+
 /* ==========================
    8. FOOTER Y BOTÓN WHATSAPP
    ========================== */
 footer {
   background-color: var(--azul-noche);
   color: var(--crema);
-  text-align: center;
   padding: var(--espacio-l);
+  padding-bottom: 5rem; /* Espacio extra para que el enlace de WhatsApp no tape el pie */
   margin-top: var(--espacio-xl);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--espacio-l);
 }
 
 footer p {
   color: var(--crema);
   margin-bottom: 0;
+}
+
+.pie-titulo {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  margin-bottom: var(--espacio-xs);
 }
 
 footer a {
@@ -318,45 +399,9 @@ footer a {
   color: #ffffff;
 }
 
+
 /* ==========================
-   9. DISEÑO RESPONSIVO (MÓVILES)
-   ========================== */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    gap: var(--espacio-s);
-  }
-
-  #menu {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .portada h1 {
-    font-size: 1.7rem;
-  }
-}
-/* Ajustes adicionales para la sección Encuéntranos */
-#encuentranos .galeria {
-  display: flex;
-  gap: var(--espacio-m);
-  flex-wrap: wrap;
-  margin: var(--espacio-m) 0;
-}
-
-#encuentranos .galeria img {
-  flex: 1 1 200px;
-  max-width: 100%;
-}
-
-.enlaces-contacto {
-  display: flex;
-  gap: var(--espacio-m);
-  flex-wrap: wrap;
-  margin-top: var(--espacio-m);
-}
-/* ==========================
-   ESTILOS DE FORMULARIO Y RESERVAS
+   9. FORMULARIO Y RESERVAS
    ========================== */
 .formulario-reserva fieldset {
   border: 1px solid rgba(20, 33, 61, 0.15);
@@ -454,10 +499,15 @@ footer a {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: var(--espacio-l);
 }
-/* ==========================================
-   ESTILOS DE TABLAS Y TARIFAS
-   ========================================== */
 
+.enlace-destacado {
+  font-weight: 600;
+}
+
+
+/* ==========================
+   10. TABLAS Y TARIFAS
+   ========================== */
 /* Contenedor con scroll horizontal en móviles para evitar que las tablas desborden */
 .tabla-contenedor {
   overflow-x: auto;
@@ -477,7 +527,6 @@ table {
 
 caption {
   text-align: left;
-  font-weight: 600;
   color: var(--gris-asfalto);
   margin-bottom: var(--espacio-s);
   font-size: 0.9rem;
@@ -555,6 +604,10 @@ td {
   font-size: 1.1rem;
 }
 
+.destacado {
+  color: var(--azul-noche);
+}
+
 .lista-requisitos {
   list-style: disc;
   padding-left: var(--espacio-l);
@@ -563,4 +616,27 @@ td {
 
 .lista-requisitos li {
   margin-bottom: var(--espacio-xs);
+}
+
+
+/* ==========================
+   11. DISEÑO RESPONSIVO (MÓVILES)
+   ========================== */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    gap: var(--espacio-s);
+  }
+
+  #menu {
+    justify-content: center;
+  }
+
+  .portada h1 {
+    font-size: 1.7rem;
+  }
+
+  footer {
+    flex-direction: column;
+  }
 }

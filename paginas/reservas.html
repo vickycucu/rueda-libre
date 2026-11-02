@@ -6,12 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Reserva tu bicicleta o recorrido guiado en Rueda Libre. Consulta nuestros horarios y canales de contacto.">
   <title>Reservas y Horarios | Rueda Libre - Alquiler de bicicletas en Medellín</title>
-  
+
   <!-- Fuentes Google -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-  
+
   <!-- Estilos CSS -->
   <link rel="stylesheet" href="../css/styles.css">
 </head>
@@ -42,26 +42,26 @@
     <!-- Formulario de Reserva -->
     <section>
       <h2>Formulario de reserva</h2>
-      
+
       <form action="#" method="post" class="formulario-reserva">
-        
+
         <fieldset>
           <legend>Tus datos personales</legend>
           <div class="grupo-campo">
             <label for="nombre">Nombre completo</label>
             <input type="text" id="nombre" name="nombre" required minlength="3" placeholder="Ej. Juan Pérez">
           </div>
-          
+
           <div class="grupo-campo">
             <label for="documento">Número de documento</label>
             <input type="text" id="documento" name="documento" required pattern="[0-9]{6,10}" title="Solo números, entre 6 y 10 dígitos." placeholder="Ej. 1023456789">
           </div>
-          
+
           <div class="grupo-campo">
             <label for="correo">Correo electrónico</label>
             <input type="email" id="correo" name="correo" required placeholder="correo@ejemplo.com">
           </div>
-          
+
           <div class="grupo-campo">
             <label for="celular">Celular</label>
             <input type="tel" id="celular" name="celular" required pattern="3[0-9]{9}" title="10 dígitos que empiecen por 3." placeholder="Ej. 3001234567">
@@ -70,7 +70,7 @@
 
         <fieldset>
           <legend>Detalles de tu alquiler</legend>
-          
+
           <div class="grupo-campo">
             <label for="fecha">Fecha del alquiler</label>
             <input type="date" id="fecha" name="fecha" required min="2026-11-01" max="2026-12-31">
@@ -113,7 +113,7 @@
 
         <fieldset>
           <legend>Confirmación</legend>
-          
+
           <div class="grupo-campo">
             <label for="comentarios">Comentarios o solicitudes especiales</label>
             <textarea id="comentarios" name="comentarios" maxlength="300" rows="3" placeholder="Indícanos si requieres cascos infantiles o alguna especificación adicional."></textarea>
@@ -153,7 +153,19 @@
 
   <!-- Pie de página -->
   <footer>
-    <p>Rueda Libre | Correo: <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a> | &copy; 2026</p>
+    <div>
+      <p class="pie-titulo">Rueda Libre</p>
+      <p>&copy; 2026</p>
+    </div>
+    <div>
+      <p class="pie-titulo">Contacto</p>
+      <p><a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a></p>
+    </div>
+    <div>
+      <p class="pie-titulo">Horario</p>
+      <p>Lunes a viernes: 7:00 a. m. a 7:00 p. m.</p>
+      <p>Sábados, domingos y festivos: 6:00 a. m. a 2:00 p. m.</p>
+    </div>
   </footer>
 
   <!-- Botón flotante de WhatsApp -->
