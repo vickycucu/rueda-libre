@@ -1,5 +1,7 @@
 /* ==========================================================
-   Rueda Libre - Hoja de estilos principal (v1.0)
+   Rueda Libre - Hoja de estilos principal (v1.5)
+   Enfoque mobile-first: los estilos sin media query describen
+   el celular; las secciones 11 y 12 agregan lo que cambia.
    Secciones:
    0. Variables
    1. Reset y estilos base
@@ -14,7 +16,8 @@
    8. Footer y botón WhatsApp
    9. Formulario y reservas
    10. Tablas y tarifas
-   11. Diseño responsivo (móviles)
+   11. Tablet (min-width: 768px)
+   12. Escritorio (min-width: 1200px)
    ========================================================== */
 
 
@@ -112,13 +115,18 @@ img {
 main {
   max-width: var(--ancho-contenido);
   margin: 0 auto;
-  padding: var(--espacio-l) var(--espacio-m);
+  padding: var(--espacio-l) var(--espacio-s);
+}
+
+/* Al entrar por un enlace #ancla el encabezado fijo no tapa el título */
+section[id] {
+  scroll-margin-top: 7rem;
 }
 
 section {
   margin-bottom: var(--espacio-xl);
   background-color: #ffffff;
-  padding: var(--espacio-l);
+  padding: var(--espacio-m);
   border-radius: var(--radio);
   box-shadow: 0 2px 8px rgba(20, 33, 61, 0.04);
 }
@@ -136,9 +144,10 @@ section {
 header {
   background-color: #ffffff;
   box-shadow: 0 2px 6px rgba(20, 33, 61, 0.08);
-  padding: var(--espacio-m) var(--espacio-l);
+  padding: var(--espacio-m);
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; /* Marca arriba y menú debajo, centrados */
+  gap: var(--espacio-s);
   align-items: center;
   position: sticky;
   top: 0;
@@ -157,7 +166,8 @@ header {
   list-style: none;
   display: flex;
   flex-wrap: wrap;
-  gap: var(--espacio-m);
+  justify-content: center;
+  gap: var(--espacio-s);
 }
 
 #menu a {
@@ -177,16 +187,16 @@ header {
 /* ==========================
    4. SECCIÓN PORTADA Y BOTONES
    ========================== */
-/* Dos columnas iguales; align-items centra el texto frente a la foto */
+/* Una columna: el texto primero y la foto debajo */
 .portada {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--espacio-xl);
+  grid-template-columns: 1fr;
+  gap: var(--espacio-l);
   align-items: center;
   background-color: var(--azul-noche);
   color: #ffffff;
   text-align: left;
-  padding: var(--espacio-xl) var(--espacio-l);
+  padding: var(--espacio-l) var(--espacio-m);
   border-radius: var(--radio);
 }
 
@@ -198,7 +208,7 @@ header {
 
 .portada h1 {
   color: #ffffff;
-  font-size: 2.2rem;
+  font-size: 1.7rem;
 }
 
 .portada p {
@@ -232,7 +242,7 @@ header {
    ========================== */
 .rutas-galeria {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: var(--espacio-l);
 }
 
@@ -265,7 +275,7 @@ header {
 /* Grid automático para las tarjetas de servicios */
 section:has(.tarjeta) {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: var(--espacio-l);
   align-items: stretch;
 }
@@ -453,8 +463,7 @@ footer {
   padding-bottom: 5rem; /* Espacio extra para que el enlace de WhatsApp no tape el pie */
   margin-top: var(--espacio-xl);
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  flex-direction: column;
   gap: var(--espacio-l);
 }
 
@@ -499,10 +508,10 @@ footer a {
 /* ==========================
    9. FORMULARIO Y RESERVAS
    ========================== */
-/* Formulario dos tercios, contacto un tercio */
+/* Una columna: el formulario primero y el contacto debajo */
 .reservas-layout {
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--espacio-l);
   align-items: start;
   margin-bottom: var(--espacio-xl);
@@ -513,6 +522,7 @@ footer a {
 }
 
 .formulario-reserva fieldset {
+  min-width: 0; /* Por defecto no se encoge por debajo de su contenido */
   border: 1px solid rgba(20, 33, 61, 0.15);
   border-radius: var(--radio);
   padding: var(--espacio-m);
@@ -635,7 +645,7 @@ footer a {
 /* ==========================
    10. TABLAS Y TARIFAS
    ========================== */
-/* Contenedor con scroll horizontal en móviles para evitar que las tablas desborden */
+/* Respaldo: a 360 px las tablas caben; el scroll solo aplicaría en anchos menores */
 .tabla-contenedor {
   overflow-x: auto;
   margin-top: var(--espacio-m);
@@ -645,7 +655,7 @@ table {
   width: 100%;
   border-collapse: collapse;
   margin-top: var(--espacio-s);
-  font-size: 0.95rem;
+  font-size: 0.75rem;
   background-color: #ffffff;
   border-radius: var(--radio);
   overflow: hidden;
@@ -660,7 +670,7 @@ caption {
 }
 
 th, td {
-  padding: var(--espacio-m);
+  padding: var(--espacio-s) var(--espacio-xs);
   text-align: left;
   border-bottom: 1px solid #e2e8f0;
 }
@@ -673,6 +683,7 @@ thead tr {
 thead th {
   font-family: var(--fuente-titulos);
   font-weight: 700;
+  font-size: 0.7rem;
 }
 
 /* Filas alternadas para mejor lectura */
@@ -697,9 +708,9 @@ td {
 /* Etiquetas visuales para los niveles de dificultad */
 .nivel {
   display: inline-block;
-  padding: var(--espacio-xs) var(--espacio-s);
+  padding: var(--espacio-xs);
   border-radius: var(--radio);
-  font-size: 0.8rem;
+  font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
   color: #ffffff;
@@ -747,29 +758,109 @@ td {
 
 
 /* ==========================
-   11. DISEÑO RESPONSIVO (MÓVILES)
+   11. TABLET (MIN-WIDTH: 768PX)
    ========================== */
-@media (max-width: 768px) {
+@media (min-width: 768px) {
+  main {
+    padding-inline: var(--espacio-m);
+  }
+
+  section {
+    padding: var(--espacio-l);
+  }
+
+  /* En una línea el encabezado es más bajo */
+  section[id] {
+    scroll-margin-top: 5.5rem;
+  }
+
+  /* Se recupera la distribución del MiniReto 1: marca y menú en una línea */
   header {
-    flex-direction: column;
-    gap: var(--espacio-s);
+    flex-direction: row;
+    justify-content: space-between;
+    padding-inline: var(--espacio-l);
   }
 
   #menu {
-    justify-content: center;
+    gap: var(--espacio-m);
+  }
+
+  .portada {
+    grid-template-columns: 1fr 1fr;
+    padding: var(--espacio-xl) var(--espacio-l);
   }
 
   .portada h1 {
-    font-size: 1.7rem;
+    font-size: 1.9rem;
   }
 
-  .portada,
-  .rutas-galeria,
+  .rutas-galeria {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Son tres rutas: la última ocupa la fila completa para no dejar un hueco */
+  .ruta-tarjeta:last-child {
+    grid-column: 1 / -1;
+  }
+
+  /* Un tercio dejaría muy poco espacio al correo a este ancho */
   .reservas-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 3fr 2fr;
   }
 
   footer {
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  table {
+    font-size: 0.95rem;
+  }
+
+  th, td {
+    padding: var(--espacio-m);
+  }
+
+  thead th {
+    font-size: 1em;
+  }
+
+  .nivel {
+    padding: var(--espacio-xs) var(--espacio-s);
+    font-size: 0.8rem;
+  }
+}
+
+
+/* ==========================
+   12. ESCRITORIO (MIN-WIDTH: 1200PX)
+   ========================== */
+@media (min-width: 1200px) {
+  /* Encabezado y pie alineados con el contenido de main en monitores anchos */
+  header,
+  footer {
+    padding-inline: max(var(--espacio-l), calc((100% - var(--ancho-contenido)) / 2 + var(--espacio-m)));
+  }
+
+  .portada {
+    gap: var(--espacio-xl);
+  }
+
+  .portada h1 {
+    font-size: 2.2rem;
+  }
+
+  .rutas-galeria {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .ruta-tarjeta:last-child {
+    grid-column: auto;
+  }
+
+  /* Formulario dos tercios, contacto un tercio */
+  .reservas-layout {
+    grid-template-columns: 2fr 1fr;
   }
 }

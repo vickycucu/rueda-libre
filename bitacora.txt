@@ -20,13 +20,33 @@ JavaScript permitirá que la página web responda a las acciones de los usuarios
 1280 px: 4 columnas
 900 px: 3 columnas
 500 px: 1 columna
+Medido en la v1.5: 360 px: 1 columna / 768 px: 2 columnas / 1280 px: 4 columnas (auto-fit, sin media queries)
 
 #Layout: Flexbox o Grid
 Criterio: Flexbox para una dimensión (elementos en una sola línea); Grid para dos dimensiones o cuando el contenedor define las columnas.
-Portada: Grid. El contenedor define dos columnas con 1fr 1fr y en esa fila centra el texto frente a la foto con align-items, así controla columna y fila a la vez.
-Galería: Grid. Las tarjetas se alinean por columnas y por filas: repeat(3, 1fr) da tres columnas iguales y, al apilarse, siguen el mismo trazado.
-Reservas: Grid. La proporción 2:1 es una decisión de columnas del contenedor (2fr 1fr) y no depende del contenido de cada bloque.
+Portada: Grid. Una columna en móvil; desde 768 px el contenedor define 1fr 1fr y centra el texto frente a la foto con align-items, así controla columna y fila a la vez.
+Galería: Grid. Las tarjetas se alinean por columnas y por filas: 1 columna en móvil, 2 desde 768 px (la tercera ruta ocupa la fila completa) y repeat(3, 1fr) desde 1200 px.
+Reservas: Grid. Una columna en móvil, 3fr 2fr desde 768 px y 2fr 1fr desde 1200 px; la proporción es una decisión de columnas del contenedor y no depende del contenido de cada bloque.
 Fila del formulario: Flexbox. Son dos campos (documento y celular) en una sola línea, una dimensión; gap los separa y bajan a otra línea si no caben.
-Encabezado: Flexbox. Marca y menú van en una sola línea, una dimensión; justify-content los separa y align-items los centra.
-Pie: Flexbox. Tres bloques en una sola línea, una dimensión; no hay otra fila con la que alinearlos.
+Encabezado: Flexbox. Marca y menú van en una sola dirección, una dimensión; flex-direction cambia de columna a fila desde 768 px, justify-content los separa y align-items los centra.
+Pie: Flexbox. Tres bloques en una sola dirección, una dimensión; columna en móvil y fila desde 768 px.
+
+#Comportamiento del encabezado y el pie
+360 px: encabezado con la marca arriba y el menú debajo, centrados (104 px de alto). Pie con los tres bloques apilados.
+768 px: encabezado en una línea, marca a la izquierda y menú a la derecha (70 px de alto). Pie con los tres bloques en fila.
+1200 px: igual que en tablet, pero encabezado y pie se alinean con los bordes del contenido de main.
+El encabezado sigue fijo arriba (sticky) en todos los anchos.
+
+#Problemas responsive
+Medidos con la emulación de ancho del navegador integrado de la app a 360, 768 y 1280 px.
+1. Tabla de recorridos cortada a 360 px. Medía 508 px dentro de un contenedor de 280 px (la de alquiler, 384 px). Solución: en móvil menos relleno en th y td, letra de 12 px, encabezados de 0.7rem y etiqueta de nivel más pequeña. Quedó en 311 px, todavía sin caber en 296 px, así que también reduje el relleno lateral de main y section. Resultado: 312/312, sin scroll.
+2. El encabezado fijo tapaba el título al entrar por un enlace con ancla (tarifas.html#recorridos). El título quedaba en y = 16 px y el encabezado llegaba hasta y = 104 px. Solución: scroll-margin-top en section[id], 7rem en móvil y 5.5rem desde 768 px. Resultado: el título queda en y = 128 px, visible.
+3. El correo se partía en dos líneas en reservas a 768 px con la proporción 2fr 1fr (columna de 232 px, enlace de 48 px de alto). Solución: 3fr 2fr entre 768 y 1199 px, y 2fr 1fr desde 1200 px. Resultado: columna de 279 px y correo en una línea.
+4. El menú se partía en dos líneas con 345 px útiles y el encabezado fijo subía a 146 px de alto. Solución: en móvil menos relleno lateral en el encabezado y menos separación entre enlaces. Resultado: 104 px de alto, con el menú en una línea, hasta en 320 px.
+
+Limitación: a 320 px la tabla de recorridos mide 296 px en 272 px y usa el scroll interno de .tabla-contenedor; la página no se desplaza de lado.
+
+#Publicación v1.5
+URL:
+Prueba en celular real (modelo y resultado):
 
